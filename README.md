@@ -75,6 +75,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ## Netflix GPT
  - Create react app
  - Configured tailwind css
+ - Routing
  - Header
  - Login form
  - Signup form
+ - Form validation
+ - useRef
+ - firebase setup.
+ - deployed app on firebase.
+ - created sign in and sign up user.
+ - created redux store to store user details.
