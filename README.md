@@ -85,3 +85,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
  - deployed app on firebase.
  - created sign in and sign up user.
  - created redux store to store user details.
+ - Bugfix: If user is not logged in then navigate to login page.
+ - unsubscribe to onAuthStateChanged.

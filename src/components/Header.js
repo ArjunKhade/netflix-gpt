@@ -7,22 +7,24 @@ import { addUser, removeUser } from "../utils/userSlice";
 
 const Header = () => {
   const navigate = useNavigate();
- const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
-        const {uid, email, displayName} = user;
-        dispatch(addUser({uid: uid, displayName: displayName, email: email}))
-        navigate("/browse")
+        const { uid, email, displayName } = user;
+        dispatch(addUser({ uid: uid, displayName: displayName, email: email }));
+        navigate("/browse");
       } else {
         // User is signed out
         dispatch(removeUser());
         // navigate("/")
       }
     });
+    //unsubsribe when component unmount
+    return () => unsubscribe();
   }, []);
 
   const handleSignOut = () => {
