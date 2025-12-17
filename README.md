@@ -87,3 +87,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
  - created redux store to store user details.
  - Bugfix: If user is not logged in then navigate to login page.
  - unsubscribe to onAuthStateChanged.
+ - Register tmdb app get access token and api key.
+ - get data from tmdb for now playing movie list.
+ - Create store for movies.
