@@ -14,3 +14,13 @@ export const API_Options = {
 
 
 export const TMDB_IMAGE_CDN_URL = "https://image.tmdb.org/t/p/w400/";
+
+export const BGURL = 'https://assets.nflxext.com/ffe/siteui/vlv3/274d310a-9543-4b32-87f3-147b372abc00/web/IN-en-20251201-TRIFECTA-perspective_baf6d3bc-eece-4a63-bcbb-e0a2f5d9d9ec_large.jpg';
+
+
+export const SUPPORTED_LANGUAGE=[
+  {Label: "English", Value:"en"},
+  {Label: "Hindi", Value:"hindi"},
+  {Label: "Spanish", Value:"spanish"},
+  
+];
