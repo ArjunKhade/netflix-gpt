@@ -10,7 +10,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { addUser } from "../utils/userSlice";
 import { useDispatch } from "react-redux";
-import { USER_AVATAR } from "../utils/constant";
+import { BGURL, USER_AVATAR } from "../utils/constant";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -25,8 +25,6 @@ const Login = () => {
     setIsSignInForm(!isSignInForm);
   };
   const handleButtonClicked = () => {
-    console.log(email.current.value);
-    console.log(password.current.value);
     //validate form
     const message = validateDate(email.current.value, password.current.value);
     setErrorMessage(message);
@@ -41,7 +39,6 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
 
           updateProfile(auth.currentUser, {
             displayName: name.current.value,
@@ -74,7 +71,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
           navigate("/");
         })
         .catch((error) => {
@@ -89,7 +85,7 @@ const Login = () => {
       <Header />
       <div className="absolute">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/274d310a-9543-4b32-87f3-147b372abc00/web/IN-en-20251201-TRIFECTA-perspective_baf6d3bc-eece-4a63-bcbb-e0a2f5d9d9ec_large.jpg"
+          src={BGURL}
           alt="background"
         />
       </div>
