@@ -16,6 +16,7 @@ const Header = () => {
   const handleGptSearch = () => {
     //handle on GPT search button clicked
     dispatch(toggleGptSearch());
+    showGPTSearch ? navigate("/browse"): navigate("/")
   };
 
   useEffect(() => {
@@ -52,11 +53,11 @@ const handleLangChange = (e) => {
 }
 
   return (
-    <div className=" z-10 flex justify-between absolute w-screen px-8 py-2 bg-gradient-to-b from-black">
-      <img className="w-44" alt="logo" src={LOGO} />
+    <div className=" z-10 flex  absolute w-screen px-8 py-2 bg-gradient-to-b from-black flex-col sm:flex-row md:flex-row  md:justify-between sm:justify-between">
+      <img className="w-44 mx-auto md:mx-0" alt="logo" src={LOGO} />
 
       {true && (
-        <div className="flex items-center">
+        <div className="flex justify-between items-center">
           { showGPTSearch &&
             <select className="p-2 m-2 bg-gray-900 text-white" onChange={handleLangChange}> 
             {SUPPORTED_LANGUAGE.map((lang) => (
@@ -71,7 +72,7 @@ const handleLangChange = (e) => {
           >
             {showGPTSearch? "Home Page" : "GPT Search"}
           </button>
-          <img className="w-10 h-10 rounded" alt="usericon" src={USER_AVATAR} />
+          <img className=" hidden md:block w-10 h-10 rounded" alt="usericon" src={USER_AVATAR} />
           <button
             onClick={handleSignOut}
             className="ml-4 px-4 py-2 bg-red-600 text-white font-semibold rounded hover:bg-red-700 transition duration-200 cursor-pointer"

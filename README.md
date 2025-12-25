@@ -90,3 +90,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
  - Register tmdb app get access token and api key.
  - get data from tmdb for now playing movie list.
  - Create store for movies.
+ - Creaed multi language website
+ - Moview Search Func
+ - Use .env for API keys
+ - Reduce api calls
+ - Make website responsive

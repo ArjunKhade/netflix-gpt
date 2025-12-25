@@ -18,7 +18,7 @@ const MovieList = ({ title, movies }) => {
 
   return (
     <div className="px-2 relative">
-      <h1 className="py-4 text-2xl text-white">{title}</h1>
+      <h1 className="py-4 text-lg md:text-2xl text-white">{title}</h1>
       <div className="relative">
         <button onClick={scrollLeft}
           className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-4 rounded-full z-10 hover:bg-opacity-75">
