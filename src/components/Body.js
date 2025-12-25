@@ -1,9 +1,9 @@
 import Login from "./Login";
 import Browse from "./Browse";
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const Body = () => {
-  const appRouter = createHashRouter([
+  const appRouter = createBrowserRouter([
     {
       path: "/",
       element: <Login />,
@@ -14,7 +14,11 @@ const Body = () => {
     },
   ]);
 
-  return <RouterProvider router={appRouter} />;
+  return (
+    <div>
+      <RouterProvider router={appRouter} />
+    </div>
+  );
 };
 
 export default Body;
