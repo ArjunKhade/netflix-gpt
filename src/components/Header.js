@@ -15,8 +15,10 @@ const Header = () => {
   const showGPTSearch = useSelector((store) => store.gpt.showGptSearch);
   const handleGptSearch = () => {
     //handle on GPT search button clicked
-    dispatch(toggleGptSearch());
-    showGPTSearch ? navigate("/browse"): navigate("/")
+    if(user){
+      dispatch(toggleGptSearch());
+      if(showGPTSearch) navigate("/browse")
+      }
   };
 
   useEffect(() => {
@@ -25,7 +27,6 @@ const Header = () => {
         // User is signed in, see docs for a list of available properties
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid: uid, displayName: displayName, email: email }));
-        navigate("/browse");
       } else {
         // User is signed out
         dispatch(removeUser());
@@ -37,15 +38,17 @@ const Header = () => {
   }, []);
 
   const handleSignOut = () => {
+    if(user){
     signOut(auth)
       .then(() => {
-        navigate("/");
         // Sign-out successful.
+        navigate("/");
       })
       .catch((error) => {
-        navigate("/error");
         // An error happened.
+        navigate("/error");
       });
+    }
   };
 
 const handleLangChange = (e) => {
@@ -56,8 +59,8 @@ const handleLangChange = (e) => {
     <div className=" z-10 flex  absolute w-screen px-8 py-2 bg-gradient-to-b from-black flex-col sm:flex-row md:flex-row  md:justify-between sm:justify-between">
       <img className="w-44 mx-auto md:mx-0" alt="logo" src={LOGO} />
 
-      {true && (
-        <div className="flex justify-between items-center">
+      {user && (
+        <div className="flex justify-between items-center text-white">
           { showGPTSearch &&
             <select className="p-2 m-2 bg-gray-900 text-white" onChange={handleLangChange}> 
             {SUPPORTED_LANGUAGE.map((lang) => (
@@ -73,6 +76,7 @@ const handleLangChange = (e) => {
             {showGPTSearch? "Home Page" : "GPT Search"}
           </button>
           <img className=" hidden md:block w-10 h-10 rounded" alt="usericon" src={USER_AVATAR} />
+          <span className="text-white ml-2">{user?.displayName}</span> 
           <button
             onClick={handleSignOut}
             className="ml-4 px-4 py-2 bg-red-600 text-white font-semibold rounded hover:bg-red-700 transition duration-200 cursor-pointer"
