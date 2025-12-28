@@ -52,13 +52,15 @@ const Login = () => {
               dispatch(
                 addUser({ uid: uid, displayName: displayName, email: email })
               );
+
+              setIsSignInForm(true);
+
             })
             .catch((error) => {
               // An error occurred
               // ...
             });
 
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -67,11 +69,11 @@ const Login = () => {
           // ..
         });
     } else {
-      signInWithEmailAndPassword(auth, email, password)
+      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          navigate("/");
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
